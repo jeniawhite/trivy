@@ -7,6 +7,7 @@ import (
 	"github.com/aquasecurity/trivy/pkg/fanal/analyzer"
 	misconf "github.com/aquasecurity/trivy/pkg/fanal/analyzer/config"
 	"github.com/aquasecurity/trivy/pkg/fanal/types"
+	"github.com/aws/aws-sdk-go-v2/config"
 )
 
 type Option struct {
@@ -27,6 +28,7 @@ type Option struct {
 	RekorURL          string
 	Platform          string
 	Slow              bool // Lower CPU and memory
+	AWSOptFns         []func(*config.LoadOptions) error
 
 	MisconfScannerOption misconf.ScannerOption
 	SecretScannerOption  analyzer.SecretScannerOption

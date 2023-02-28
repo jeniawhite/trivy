@@ -112,7 +112,7 @@ func NewArtifact(target string, c cache.ArtifactCache, opt artifact.Option) (art
 		return newAMI(target, storage)
 	case TypeEBS:
 		target = strings.TrimPrefix(target, TypeEBS.Prefix())
-		e, err := newEBS(target, storage)
+		e, err := newEBS(target, storage, opt.AWSOptFns...)
 		if err != nil {
 			return nil, xerrors.Errorf("new EBS error: %w", err)
 		}

@@ -976,6 +976,8 @@ github.com/hashicorp/golang-lru v0.5.0/go.mod h1:/m3WP610KZHVQ1SGc6re/UDhFvYD7pJ
 github.com/hashicorp/golang-lru v0.5.1/go.mod h1:/m3WP610KZHVQ1SGc6re/UDhFvYD7pJ4Ao+sR/qLZy8=
 github.com/hashicorp/golang-lru v0.5.4 h1:YDjusn29QI/Das2iO9M0BHnIbxPeyuCHsjMW+lJfyTc=
 github.com/hashicorp/golang-lru v0.5.4/go.mod h1:iADmTwqILo4mZ8BN3D2Q6+9jd8WM5uGBxy+E8yxSoD4=
+github.com/hashicorp/golang-lru/v2 v2.0.1 h1:5pv5N1lT1fjLg2VQ5KWc7kmucp2x/kvFOnxuVTqZ6x4=
+github.com/hashicorp/golang-lru/v2 v2.0.1/go.mod h1:QeFd9opnmA6QUJc5vARoKUSoFhyfM2/ZepoAG6RGpeM=
 github.com/hashicorp/hcl v1.0.0 h1:0Anlzjpi4vEasTeNFn2mLJgTSwt0+6sfsiTG8qcWGx4=
 github.com/hashicorp/hcl v1.0.0/go.mod h1:E5yfLk+7swimpb2L/Alb/PJmXilQ/rhwaUYs4T20WEQ=
 github.com/hashicorp/hcl/v2 v2.14.1 h1:x0BpjfZ+CYdbiz+8yZTQ+gdLO7IXvOut7Da+XJayx34=
@@ -1121,8 +1123,8 @@ github.com/markbates/safe v1.0.1/go.mod h1:nAqgmRi7cY2nqMc92/bSEeQA+R4OheNU2T1kN
 github.com/marstr/guid v1.1.0/go.mod h1:74gB1z2wpxxInTG6yaqA7KrtM0NZ+RbrcqDvYHefzho=
 github.com/masahiro331/go-disk v0.0.0-20220919035250-c8da316f91ac h1:QyRucnGOLHJag1eB9CtuZwZk+/LpvTSYr5mnFLLFlgA=
 github.com/masahiro331/go-disk v0.0.0-20220919035250-c8da316f91ac/go.mod h1:J7Vb0sf0JzOhT0uHTeCqO6dqP/ELVcQvQ6yQ/56ZRGw=
-github.com/masahiro331/go-ebs-file v0.0.0-20221125181850-09c63351e38c h1:sBVxQbdRxqMoczqQYPxUwe3V3msmAUj9KPuPZRpD13k=
-github.com/masahiro331/go-ebs-file v0.0.0-20221125181850-09c63351e38c/go.mod h1:5NOkqebMwu8UiOTSjwqam1Ykdr7fci52TVE2xDQnIiM=
+github.com/masahiro331/go-ebs-file v0.0.0-20230228042409-005c81d4ae43 h1:umYrurEClKuDjU29DKNNPmnWJNt4mnR0fWLOpWsDg0M=
+github.com/masahiro331/go-ebs-file v0.0.0-20230228042409-005c81d4ae43/go.mod h1:5NOkqebMwu8UiOTSjwqam1Ykdr7fci52TVE2xDQnIiM=
 github.com/masahiro331/go-ext4-filesystem v0.0.0-20221016160854-4b40d7ee6193 h1:1005OfmUUdBL4540DpkovaDrV+lkiEda7Nb/t792LEg=
 github.com/masahiro331/go-ext4-filesystem v0.0.0-20221016160854-4b40d7ee6193/go.mod h1:X08d9nmB+eg7Gj2XWAOkiG8lbMFbgGXPsDKEvkFwyF8=
 github.com/masahiro331/go-mvn-version v0.0.0-20210429150710-d3157d602a08 h1:AevUBW4cc99rAF8q8vmddIP8qd/0J5s/UyltGbp66dg=

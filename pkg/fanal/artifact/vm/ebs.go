@@ -4,7 +4,8 @@ import (
 	"context"
 	"io"
 
-	lru "github.com/hashicorp/golang-lru"
+	"github.com/aws/aws-sdk-go-v2/config"
+	lru "github.com/hashicorp/golang-lru/v2"
 	ebsfile "github.com/masahiro331/go-ebs-file"
 	"golang.org/x/xerrors"
 
@@ -24,8 +25,8 @@ type EBS struct {
 	ebs        ebsfile.EBSAPI
 }
 
-func newEBS(snapshotID string, vm Storage) (*EBS, error) {
-	ebs, err := ebsfile.New(ebsfile.Option{})
+func newEBS(snapshotID string, vm Storage, optFns ...func(*config.LoadOptions) error) (*EBS, error) {
+	ebs, err := ebsfile.New(context.TODO(), optFns...)
 	if err != nil {
 		return nil, xerrors.Errorf("new ebsfile error: %w", err)
 	}
@@ -75,7 +76,7 @@ func (a *EBS) Inspect(ctx context.Context) (types.ArtifactReference, error) {
 }
 
 func (a *EBS) openEBS(ctx context.Context) (*io.SectionReader, error) {
-	c, err := lru.New(storageEBSCacheSize)
+	c, err := lru.New[string, []byte](storageEBSCacheSize)
 	if err != nil {
 		return nil, xerrors.Errorf("lru cache error: %w", err)
 	}

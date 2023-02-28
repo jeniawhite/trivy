@@ -5,6 +5,7 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/aquasecurity/trivy/pkg/types"
+	"github.com/aws/aws-sdk-go-v2/config"
 )
 
 var (
@@ -56,6 +57,12 @@ var (
 		Value:      "https://rekor.sigstore.dev",
 		Usage:      "[EXPERIMENTAL] address of rekor STL server",
 	}
+	OptFnsFlag = Flag{
+		Name:       "opt-fns",
+		ConfigName: "scan.opt-fns",
+		Value:      nil,
+		Usage:      "[EXPERIMENTAL] AWS SDK options",
+	}
 )
 
 type ScanFlagGroup struct {
@@ -67,6 +74,7 @@ type ScanFlagGroup struct {
 	Slow           *Flag
 	SBOMSources    *Flag
 	RekorURL       *Flag
+	OptFns         *Flag
 }
 
 type ScanOptions struct {
@@ -79,6 +87,7 @@ type ScanOptions struct {
 	Slow           bool
 	SBOMSources    []string
 	RekorURL       string
+	OptFns         []func(*config.LoadOptions) error
 }
 
 func NewScanFlagGroup() *ScanFlagGroup {
@@ -91,6 +100,7 @@ func NewScanFlagGroup() *ScanFlagGroup {
 		Slow:           &SlowFlag,
 		SBOMSources:    &SBOMSourcesFlag,
 		RekorURL:       &RekorURLFlag,
+		OptFns:         &OptFnsFlag,
 	}
 }
 
@@ -100,7 +110,7 @@ func (f *ScanFlagGroup) Name() string {
 
 func (f *ScanFlagGroup) Flags() []*Flag {
 	return []*Flag{f.SkipDirs, f.SkipFiles, f.OfflineScan, f.SecurityChecks, f.FilePatterns,
-		f.Slow, f.SBOMSources, f.RekorURL}
+		f.Slow, f.SBOMSources, f.RekorURL, f.OptFns}
 }
 
 func (f *ScanFlagGroup) ToOptions(args []string) (ScanOptions, error) {
@@ -128,6 +138,8 @@ func (f *ScanFlagGroup) ToOptions(args []string) (ScanOptions, error) {
 		Slow:           getBool(f.Slow),
 		SBOMSources:    sbomSources,
 		RekorURL:       getString(f.RekorURL),
+		// TODO: Validation for OptFns
+		OptFns: nil,
 	}, nil
 }
 
